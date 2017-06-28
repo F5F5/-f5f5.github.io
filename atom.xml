@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>F5F5的标题</title>
+  <subtitle>F5F5的副标题</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://f5f5.github.io/"/>
+  <updated>2017-06-28T11:11:02.501Z</updated>
+  <id>https://f5f5.github.io/</id>
+  
+  <author>
+    <name>F5F5</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次面试</title>
+    <link href="https://f5f5.github.io/2017/06/16/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95/"/>
+    <id>https://f5f5.github.io/2017/06/16/记一次面试/</id>
+    <published>2017-06-16T09:56:18.000Z</published>
+    <updated>2017-06-28T11:11:02.501Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）"><a href="#1-有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）" class="headerlink" title="1.有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）"></a>1.有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）</h3><a id="more"></a>
+<p>当时脑子短路没想出来，以为手写ajax或者是考es6，回来才想起用defineProperty</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"result"</span>&gt;&lt;/div&gt; </div><div class="line">&lt;script&gt; </div><div class="line"> <span class="keyword">let</span> data = &#123;&#125;; </div><div class="line"> <span class="built_in">Object</span>.defineProperty(data,<span class="string">'a'</span>,&#123; </div><div class="line">  <span class="attr">set</span>:<span class="function">(<span class="params">value</span>)=&gt;</span>&#123; </div><div class="line">   <span class="keyword">this</span>.a = value </div><div class="line">   sum(<span class="keyword">this</span>.a,<span class="keyword">this</span>.b) </div><div class="line">  &#125; </div><div class="line"> &#125;) </div><div class="line"> <span class="built_in">Object</span>.defineProperty(data,<span class="string">'b'</span>,&#123; </div><div class="line">  <span class="attr">set</span>:<span class="function">(<span class="params">value</span>)=&gt;</span>&#123; </div><div class="line">   <span class="keyword">this</span>.b = value </div><div class="line">   sum(<span class="keyword">this</span>.a,<span class="keyword">this</span>.b) </div><div class="line">  &#125; </div><div class="line"> &#125;) </div><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123; </div><div class="line">  <span class="keyword">if</span> (!a||!b) <span class="keyword">return</span> </div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'result'</span>).innerText = a+b; </div><div class="line"> &#125; </div><div class="line"> setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </div><div class="line">  data.a=<span class="number">1</span>; </div><div class="line"> &#125;,<span class="number">500</span>) </div><div class="line"> setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </div><div class="line">  data.b=<span class="number">2</span>; </div><div class="line"> &#125;,<span class="number">500</span>) </div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p><br><br></p>
+<h3 id="2-有一台电脑里面有一个1G的文件。电脑之间可以用网线连接，传输速度是1G每秒。问把这个文件复制到八台电脑最短时间？"><a href="#2-有一台电脑里面有一个1G的文件。电脑之间可以用网线连接，传输速度是1G每秒。问把这个文件复制到八台电脑最短时间？" class="headerlink" title="2.有一台电脑里面有一个1G的文件。电脑之间可以用网线连接，传输速度是1G每秒。问把这个文件复制到八台电脑最短时间？"></a>2.有一台电脑里面有一个1G的文件。电脑之间可以用网线连接，传输速度是1G每秒。问把这个文件复制到八台电脑最短时间？</h3><p>当时想了一下就说出个4秒😓<br>第一秒：第一台电脑复制到第二台电脑<br>第二秒：第一，二台电脑复制到第三，四台电脑<br>第三秒：第一，二，三，四台电脑复制到第五，六，七，八台电脑<br>第四秒：复制到第九台电脑 </p>
+<p>这个问题当然没这么简单，面试官说4秒太长了，</p>
+<p>想了一下，四秒确实太长，有几台电脑都空闲了很久，浪费了带宽</p>
+<p>第一秒，把文件切割成8份，分别传给8台电脑，每个电脑有1/8 G的文件<br>然后用8根网线把8台电脑连成环路，这样带宽就是8G/s，写4G/s,读4G/S，剩下7/8G * 8 = 7G 需要传输，所以是7/4秒<br>所以总共用时 1 + 7/4 = 11/4 秒？</p>
+<p>但是面试官说还有更快的😨</p>
+<p>一直没想出来</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）&quot;&gt;&lt;a href=&quot;#1-有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）&quot; class=&quot;headerlink&quot; title=&quot;1.有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）&quot;&gt;&lt;/a&gt;1.有两个接口，一个返回1，一个返回2，在页面上展示这两个接口返回结果的和（不能嵌套ajax，不能使用框架，不要使用promise，generator，async）&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://f5f5.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="面试" scheme="https://f5f5.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>npm的一些使用技巧</title>
+    <link href="https://f5f5.github.io/2017/05/21/npm%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    <id>https://f5f5.github.io/2017/05/21/npm的一些使用技巧/</id>
+    <published>2017-05-21T05:37:18.000Z</published>
+    <updated>2017-06-28T10:58:19.456Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="npm的一些使用技巧"><a href="#npm的一些使用技巧" class="headerlink" title="npm的一些使用技巧"></a>npm的一些使用技巧</h2><a id="more"></a>
+<h3 id="获取帮助的三种方式"><a href="#获取帮助的三种方式" class="headerlink" title="获取帮助的三种方式"></a>获取帮助的三种方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm <span class="built_in">help</span></div><div class="line">npm <span class="variable">$command</span> -h</div><div class="line">npm <span class="built_in">help</span> <span class="variable">$command</span></div></pre></td></tr></table></figure>
+<h3 id="没有全局安装的包，执行方法"><a href="#没有全局安装的包，执行方法" class="headerlink" title="没有全局安装的包，执行方法"></a>没有全局安装的包，执行方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.\node_modules\.bin\<span class="variable">$package</span> <span class="variable">$command</span></div></pre></td></tr></table></figure>
+<h3 id="显示所有子模块-g"><a href="#显示所有子模块-g" class="headerlink" title="显示所有子模块(-g)"></a>显示所有子模块(-g)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm list --depth=0</div></pre></td></tr></table></figure>
+<h3 id="查看package的详细信息，所有版本，发布日期等等"><a href="#查看package的详细信息，所有版本，发布日期等等" class="headerlink" title="查看package的详细信息，所有版本，发布日期等等"></a>查看package的详细信息，所有版本，发布日期等等</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm info <span class="variable">$package</span></div></pre></td></tr></table></figure>
+<h3 id="打开package的主页"><a href="#打开package的主页" class="headerlink" title="打开package的主页"></a>打开package的主页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm home <span class="variable">$package</span></div></pre></td></tr></table></figure>
+<h3 id="打开package的Github仓库地址"><a href="#打开package的Github仓库地址" class="headerlink" title="打开package的Github仓库地址"></a>打开package的Github仓库地址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm repo <span class="variable">$package</span></div></pre></td></tr></table></figure>
+<h3 id="检查package-json中的那些已经过时的依赖-g"><a href="#检查package-json中的那些已经过时的依赖-g" class="headerlink" title="检查package.json中的那些已经过时的依赖(-g)"></a>检查package.json中的那些已经过时的依赖(-g)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm outdated</div></pre></td></tr></table></figure>
+<h3 id="检查package-json中没有被用到的packages"><a href="#检查package-json中没有被用到的packages" class="headerlink" title="检查package.json中没有被用到的packages"></a>检查package.json中没有被用到的packages</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm prune</div></pre></td></tr></table></figure>
+<h3 id="检查模块的当前版本-g"><a href="#检查模块的当前版本-g" class="headerlink" title="检查模块的当前版本(-g)"></a>检查模块的当前版本(-g)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm list <span class="variable">$package</span></div></pre></td></tr></table></figure>
+<h3 id="使用cnpm"><a href="#使用cnpm" class="headerlink" title="使用cnpm"></a>使用cnpm</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;npm的一些使用技巧&quot;&gt;&lt;a href=&quot;#npm的一些使用技巧&quot; class=&quot;headerlink&quot; title=&quot;npm的一些使用技巧&quot;&gt;&lt;/a&gt;npm的一些使用技巧&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://f5f5.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="npm" scheme="https://f5f5.github.io/tags/npm/"/>
+    
+      <category term="nodejs" scheme="https://f5f5.github.io/tags/nodejs/"/>
+    
+  </entry>
+  
+</feed>
