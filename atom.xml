@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>F5F5的标题</title>
-  <subtitle>F5F5的副标题</subtitle>
+  <title>F5F5&#39;s Blog</title>
+  <subtitle>逆水行舟</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://f5f5.github.io/"/>
