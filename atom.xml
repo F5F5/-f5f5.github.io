@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://f5f5.github.io/"/>
-  <updated>2017-06-28T11:11:02.501Z</updated>
+  <updated>2017-06-29T06:29:58.583Z</updated>
   <id>https://f5f5.github.io/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用hexo快速搭建github个人博客</title>
+    <link href="https://f5f5.github.io/2017/06/29/%E4%BD%BF%E7%94%A8hexo%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAgithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://f5f5.github.io/2017/06/29/使用hexo快速搭建github个人博客/</id>
+    <published>2017-06-29T05:27:36.000Z</published>
+    <updated>2017-06-29T06:29:58.583Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用Hexo快速搭建github个人博客"><a href="#使用Hexo快速搭建github个人博客" class="headerlink" title="使用Hexo快速搭建github个人博客"></a>使用Hexo快速搭建github个人博客</h2><h3 id="1-安装Nodejs"><a href="#1-安装Nodejs" class="headerlink" title="1.安装Nodejs"></a>1.安装Nodejs</h3><p><a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a></p>
+<h3 id="2-注册Github帐号"><a href="#2-注册Github帐号" class="headerlink" title="2.注册Github帐号"></a>2.注册Github帐号</h3><p><a href="http://github.com/" target="_blank">http://github.com/</a></p>
+<h3 id="3-安装Git"><a href="#3-安装Git" class="headerlink" title="3.安装Git"></a>3.安装Git</h3><p><a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a></p>
+<h3 id="4-生成密匙"><a href="#4-生成密匙" class="headerlink" title="4.生成密匙"></a>4.生成密匙</h3><p>先查看本机是否已有密匙文件id_rsa.pub<br>（windows在 c:/Users/用户名/.ssh下，mac在~/.ssh）<br>打开id_rsa.pub并复制全部内容</p>
+<p>如果本机没有密匙文件：<br>在命令行输入命令，在本地生成密匙，（windows需要先把Git安装目录下的\usr\bin添加到环境变量path，否则会报错：ssh-keygen 不是内部或外部命令）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure></p>
+<p>一路enter即可<br>然后找到id_rsa.pub这个文件<br>（windows在 c:/Users/用户名/.ssh下，mac在~/.ssh）<br>复制全部内容</p>
+<h3 id="5-建立连接"><a href="#5-建立连接" class="headerlink" title="5.建立连接"></a>5.建立连接</h3><p>打开<a href="https://github.com/settings/ssh" target="_blank">https://github.com/settings/ssh</a><br>选择右上角的 <font size="3" color="#28a745">New SSH key</font><br>在<font size="3">key</font>下面的<font size="3">input</font>里面粘贴，然后确定即可</p>
+<h3 id="6-建立github博客仓库"><a href="#6-建立github博客仓库" class="headerlink" title="6.建立github博客仓库"></a>6.建立github博客仓库</h3><p>点击github头像旁边的<font size="4">+</font>，选择<font size="3" color="#28a745">New repository</font><br>然后在<font size="3" color="#28a745">Repository name</font>里面填入<br>你的github昵称.github.io<br>然后点确定即可</p>
+<h3 id="7-安装Hexo"><a href="#7-安装Hexo" class="headerlink" title="7.安装Hexo"></a>7.安装Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<p>推荐使用cnpm，速度更快更稳定<br>安装完成后，可以输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo -v</div></pre></td></tr></table></figure></p>
+<p>查看版本号，如果有信息则说明安装成功</p>
+<h3 id="8-初始化博客"><a href="#8-初始化博客" class="headerlink" title="8.初始化博客"></a>8.初始化博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//建立一个博客文件夹，并初始化博客，foldername为文件夹名称</div><div class="line">hexo init foldername</div><div class="line">//进入你的文件夹</div><div class="line"><span class="built_in">cd</span> foldername</div><div class="line">//安装依赖</div><div class="line">npm install</div><div class="line">//这个是推送到git仓库的插件</div><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<h3 id="9-修改配置文件"><a href="#9-修改配置文件" class="headerlink" title="9.修改配置文件"></a>9.修改配置文件</h3><p>打开根目录下的_config.yml文件，我们修改这几个地方<br>（注意格式要求比较严格，冒号后面一定要加一个空格）</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="string">//配置网站相关信息</span></div><div class="line"><span class="attr">title:</span> <span class="string">你的标题</span></div><div class="line"><span class="attr">subtitle:</span> <span class="string">你的副标题</span></div><div class="line"><span class="attr">description:</span> <span class="string">你的描述</span></div><div class="line"><span class="attr">author:</span> <span class="string">作者</span></div><div class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></div><div class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></div><div class="line"><span class="string">//最后两项复制就行</span></div><div class="line"></div><div class="line"><span class="string">//配置域名</span></div><div class="line"><span class="attr">url:</span> <span class="attr">https://你的github昵称.github.io</span></div><div class="line"></div><div class="line"><span class="string">//拉到最底部，配置远程仓库，默认只有type，repo和branch需要自己添加</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="string">去你刚才建立的博客仓库，点击绿色的按钮Clone</span> <span class="string">or</span> <span class="string">download，复制下面出现的链接到这里即可</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
+<h3 id="10-新建博客"><a href="#10-新建博客" class="headerlink" title="10.新建博客"></a>10.新建博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//新建一篇article name的文章</div><div class="line">hexo new <span class="string">'article name'</span></div></pre></td></tr></table></figure>
+<p>我们去/source/_posts目录下找到这个article name文件，<br>默认是.md扩展名的markdown文件<br>发布的时候会自动编译成html文件</p>
+<p>（不会的同学可以到网上学习一下相关语法，比较简单）</p>
+<p>然后我们在article name.md的文件底部随便写点东西，保存</p>
+<p>进行本地预览<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//启动本地服务，也可以直接hexo s</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>打开<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>即可进行预览</p>
+<h3 id="11-编译上线"><a href="#11-编译上线" class="headerlink" title="11.编译上线"></a>11.编译上线</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//编译成静态文件，也可以直接hexo g</div><div class="line">hexo generate</div><div class="line">//推送到仓库，也可以直接hexo d</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>然后在浏览器输入博客网址即可访问，比如我的是<br><a href="https://f5f5.github.io/" target="_blank">https://f5f5.github.io/</a><br>注意：一定要https，http打不开</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><font size="3">1.有没有发现博客仓库首页提示缺少readme.md，强迫症是不是很不爽？</font>
+
+<p>没关系，我们来添加这个文件。</p>
+<p>还是修改根目录下的配置文件_config.yml，加入一个README.md即可：</p>
+<font color="#ff4081">skip_render</font>: README.md<br><br>然后我们需要在/source目录下新建一个README.md，重新编译上线，提示消失，good！<br><br><font size="3">2.觉得默认的主题不好看？</font>
+
+<p>我们可以到<a href="https://hexo.io/themes/" target="_blank">https://hexo.io/themes/</a>查看更多主题，有不少国人制作的主题，按照文档一步步来就可以更换了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;使用Hexo快速搭建github个人博客&quot;&gt;&lt;a href=&quot;#使用Hexo快速搭建github个人博客&quot; class=&quot;headerlink&quot; title=&quot;使用Hexo快速搭建github个人博客&quot;&gt;&lt;/a&gt;使用Hexo快速搭建github个人博客&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://f5f5.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="hexo" scheme="https://f5f5.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次面试</title>
